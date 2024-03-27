@@ -14,6 +14,7 @@ export class EditContactComponent implements OnInit {
   addressTypes = addressTypeValues;
 
   contactForm = this.formBuilder.nonNullable.group({
+    icon: '',
     id: '',
     firstName: ['', [Validators.required, Validators.minLength(3)]],
     lastName: ['', Validators.required],

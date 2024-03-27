@@ -7,6 +7,7 @@
     <section>
       <nav>Name/Info</nav>
       <div>
+        <profile-icon-selector formControlName="icon"/>
         <input type="text" formControlName="firstName" placeholder="First Name" />
         <em *ngIf="firstName.invalid && firstName.touched && firstName.errors?.['required']">This field is required</em>
         <em *ngIf="firstName.invalid && firstName.touched && firstName.errors?.['minlength']">must be atleast 3
@@ -15,8 +16,11 @@
         <input formControlName="lastName" placeholder="Last Name" />
 
         <!-- working with date -->
-        <input type="date" formControlName="dateOfBirth"
+        <input type="date" formControlName="dateOfBirth" placeholder="Date of Birth" />
+
+        <!-- <input type="date" formControlName="dateOfBirth"
           [value]="contactForm.controls.dateOfBirth.value | date: 'yyyy-MM-dd'" placeholder="Date of Birth" />
+         -->
 
         <div>
           <span>Favorites Ranking</span><input type="range" min="0" max="5" formControlName="favoritesRanking"
@@ -75,7 +79,7 @@
       <nav>Notes</nav>
       <div>
         <textarea name="notes" id="notes" rows="5" placeholder="notes" formControlName="notes"></textarea>
-        <em *ngIf="notes.errors">Found restricted words: {{notes.errors?.['restrictedWords']}}</em>
+        <em *ngIf="notes.errors?.['restrictedWords']">Found restricted words: {{notes.errors?.['restrictedWords']}}</em>
       </div>
     </section>
 

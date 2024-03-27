@@ -1,8 +1,9 @@
 export interface Contact {
+  icon: string,
   id: string,
   firstName: string,
   lastName: string,
-  personal:boolean,
+  personal: boolean,
   dateOfBirth: Date | null,
   favoritesRanking: number | null,
   phone: Partial<Phone>,

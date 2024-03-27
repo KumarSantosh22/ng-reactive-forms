@@ -10,7 +10,7 @@ export class InMemoryContactsApi implements InMemoryDbService {
         lastName: 'Doodleplumb',
         dateOfBirth: new Date('1994/05/05'),
         favoritesRanking: 0,
-        personal:true,
+        personal: true,
         phone: { phoneNumber: '555-765-4321', phoneType: 'mobile' },
         address: {
           streetAddress: '777 Whimsy Lane',
@@ -19,7 +19,8 @@ export class InMemoryContactsApi implements InMemoryDbService {
           postalCode: 'A4321',
           addressType: 'home'
         },
-        notes: ''
+        notes: '',
+        icon: ''
       },
       {
         id: 'A6rwe',
@@ -36,7 +37,8 @@ export class InMemoryContactsApi implements InMemoryDbService {
           postalCode: 'F2231',
           addressType: 'other'
         },
-        notes: ''
+        notes: '',
+        icon: ''
       },
       {
         id: '3bNGA',
@@ -53,7 +55,8 @@ export class InMemoryContactsApi implements InMemoryDbService {
           postalCode: 'Z2345',
           addressType: 'work'
         },
-        notes: ''
+        notes: '',
+        icon: ''
       },
     ]
 
