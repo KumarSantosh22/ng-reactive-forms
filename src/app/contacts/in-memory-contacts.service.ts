@@ -10,6 +10,7 @@ export class InMemoryContactsApi implements InMemoryDbService {
         lastName: 'Doodleplumb',
         dateOfBirth: new Date('1994/05/05'),
         favoritesRanking: 0,
+        personal:true,
         phone: { phoneNumber: '555-765-4321', phoneType: 'mobile' },
         address: {
           streetAddress: '777 Whimsy Lane',
@@ -17,7 +18,8 @@ export class InMemoryContactsApi implements InMemoryDbService {
           state: 'Colohoma',
           postalCode: 'A4321',
           addressType: 'home'
-        }
+        },
+        notes: ''
       },
       {
         id: 'A6rwe',
@@ -25,6 +27,7 @@ export class InMemoryContactsApi implements InMemoryDbService {
         lastName: 'Flungford',
         dateOfBirth: new Date('1988/10/05'),
         favoritesRanking: 0,
+        personal: true,
         phone: { phoneNumber: '555-877-5678', phoneType: 'mobile' },
         address: {
           streetAddress: '543 Lullaby Lane',
@@ -33,11 +36,13 @@ export class InMemoryContactsApi implements InMemoryDbService {
           postalCode: 'F2231',
           addressType: 'other'
         },
+        notes: ''
       },
       {
         id: '3bNGA',
         firstName: 'Wanda',
         lastName: 'Giggleworth',
+        personal: true,
         dateOfBirth: new Date('1986/11/08'),
         favoritesRanking: 1,
         phone: { phoneNumber: '555-123-4567', phoneType: 'mobile' },
@@ -48,6 +53,7 @@ export class InMemoryContactsApi implements InMemoryDbService {
           postalCode: 'Z2345',
           addressType: 'work'
         },
+        notes: ''
       },
     ]
 

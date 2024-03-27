@@ -3,15 +3,35 @@
     Edit Contact
   </h1>
   <form [formGroup]="contactForm" (ngSubmit)="saveContact()">
+    <!-- section Name/Info -->
     <section>
       <nav>Name/Info</nav>
       <div>
         <input type="text" formControlName="firstName" placeholder="First Name" />
+        <em *ngIf="firstName.invalid && firstName.touched && firstName.errors?.['required']">This field is required</em>
+        <em *ngIf="firstName.invalid && firstName.touched && firstName.errors?.['minlength']">must be atleast 3
+          chars</em>
+
         <input formControlName="lastName" placeholder="Last Name" />
-        <input formControlName="dateOfBirth" placeholder="Date of Birth" />
-        <input formControlName="favoritesRanking" placeholder="Favorites Ranking" />
+
+        <!-- working with date -->
+        <input type="date" formControlName="dateOfBirth"
+          [value]="contactForm.controls.dateOfBirth.value | date: 'yyyy-MM-dd'" placeholder="Date of Birth" />
+
+        <div>
+          <span>Favorites Ranking</span><input type="range" min="0" max="5" formControlName="favoritesRanking"
+            placeholder="Favorites Ranking" />
+          <span>{{contactForm.controls.favoritesRanking.value}}</span>
+        </div>
+
+        <!-- checkbox -->
+        <div>
+          <input type="checkbox" formControlName="personal" /> Personal
+        </div>
       </div>
     </section>
+
+    <!-- section Phone -->
     <section>
       <nav>Phone</nav>
       <div formGroupName="phone" class="flex-column">
@@ -19,13 +39,18 @@
           <input formControlName="phoneNumber" placeholder="Phone" />
           <img src="/assets/plus-grey-blue.png" class="add" alt="" />
         </div>
+
+        <!-- radio buttons -->
         <div class="radio">
-          <input type="radio" formControlName="phoneType" value="mobile"> Mobile
-          <input type="radio" formControlName="phoneType" value="work"> Work
-          <input type="radio" formControlName="phoneType" value="other"> Other
+          <span *ngFor="let phoneType of phoneTypes">
+            <input type="radio" formControlName="phoneType" [value]="phoneType.value">
+            {{phoneType.title}}
+          </span>
         </div>
       </div>
     </section>
+
+    <!-- section address -->
     <section>
       <nav>Address</nav>
       <div>
@@ -37,14 +62,23 @@
           <input formControlName="city" placeholder="City" />
           <input formControlName="state" placeholder="State/Region" />
           <input formControlName="postalCode" placeholder="Zip/Postal Code" />
-          <select>
-            <option value="work">Work</option>
-            <option value="mobile">Other</option>
-            <option value="home">Home</option>
+
+          <!-- selecet option -->
+          <select formArrayName="addressType">
+            <option [value]="addressType.value" *ngFor="let addressType of addressTypes">{{addressType.title}}</option>
           </select>
         </div>
       </div>
     </section>
+
+    <section>
+      <nav>Notes</nav>
+      <div>
+        <textarea name="notes" id="notes" rows="5" placeholder="notes" formControlName="notes"></textarea>
+        <em *ngIf="notes.errors">Found restricted words: {{notes.errors?.['restrictedWords']}}</em>
+      </div>
+    </section>
+
     <div class="buttons">
       <button type="button" class="secondary">Cancel</button>
       <button type="submit" class="primary">Save</button>
